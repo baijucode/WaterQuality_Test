@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Quality Checker</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f0f4f8; color: #333; padding: 30px 16px; }
+    .container { max-width: 620px; margin: auto; }
+    h1 { font-size: 24px; color: #1a4e6e; margin-bottom: 6px; }
+    p.subtitle { color: #666; margin-bottom: 24px; font-size: 14px; }
+    .card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 4px; color: #444; }
+    .field span { font-size: 11px; color: #999; }
+    .field input { width: 100%; padding: 9px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; }
+    .field input:focus { outline: none; border-color: #2a7aad; }
+    button { margin-top: 22px; width: 100%; padding: 13px; background: #1a4e6e; color: #fff;
+             border: none; border-radius: 8px; font-size: 17px; cursor: pointer; }
+    button:hover { background: #163f58; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>💧 Water Quality Checker</h1>
+    <p class="subtitle">Enter the chemical measurements of a water sample to check if it is safe to drink.</p>
+    <div class="card">
+      <form action="/predict" method="post">
+        <div class="grid">
+          <div class="field">
+            <label>pH Level <span>(safe: 6.5 – 8.5)</span></label>
+            <input type="number" name="ph" step="0.01" value="7.0" required>
+          </div>
+          <div class="field">
+            <label>Hardness mg/L <span>(safe: 0 – 300)</span></label>
+            <input type="number" name="hardness" step="0.1" value="150" required>
+          </div>
+          <div class="field">
+            <label>Solids mg/L <span>(safe: 0 – 500)</span></label>
+            <input type="number" name="solids" step="0.1" value="300" required>
+          </div>
+          <div class="field">
+            <label>Chloramines mg/L <span>(safe: 0 – 4)</span></label>
+            <input type="number" name="chloramines" step="0.01" value="2.0" required>
+          </div>
+          <div class="field">
+            <label>Sulfate mg/L <span>(safe: 0 – 250)</span></label>
+            <input type="number" name="sulfate" step="0.1" value="150" required>
+          </div>
+          <div class="field">
+            <label>Conductivity µS/cm <span>(safe: 0 – 400)</span></label>
+            <input type="number" name="conductivity" step="0.1" value="300" required>
+          </div>
+          <div class="field">
+            <label>Organic Carbon mg/L <span>(safe: 0 – 2)</span></label>
+            <input type="number" name="organic_carbon" step="0.01" value="1.0" required>
+          </div>
+          <div class="field">
+            <label>Trihalomethanes µg/L <span>(safe: 0 – 80)</span></label>
+            <input type="number" name="trihalomethanes" step="0.1" value="40" required>
+          </div>
+          <div class="field">
+            <label>Turbidity NTU <span>(safe: 0 – 4)</span></label>
+            <input type="number" name="turbidity" step="0.01" value="2.0" required>
+          </div>
+        </div>
+        <button type="submit">🔍 Check Water Quality</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
