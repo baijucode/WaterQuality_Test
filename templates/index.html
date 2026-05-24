@@ -16,6 +16,7 @@
     .field span { font-size: 11px; color: #999; }
     .field input { width: 100%; padding: 9px 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; }
     .field input:focus { outline: none; border-color: #2a7aad; }
+    .field input::placeholder { color: #bbb; }
     button { margin-top: 22px; width: 100%; padding: 13px; background: #1a4e6e; color: #fff;
              border: none; border-radius: 8px; font-size: 17px; cursor: pointer; }
     button:hover { background: #163f58; }
@@ -30,39 +31,39 @@
         <div class="grid">
           <div class="field">
             <label>pH Level <span>(safe: 6.5 – 8.5)</span></label>
-            <input type="number" name="ph" step="0.01" value="7.0" required>
+            <input type="number" name="ph" step="0.01" placeholder="e.g. 7.0" required>
           </div>
           <div class="field">
             <label>Hardness mg/L <span>(safe: 0 – 300)</span></label>
-            <input type="number" name="hardness" step="0.1" value="150" required>
+            <input type="number" name="hardness" step="0.1" placeholder="e.g. 150" required>
           </div>
           <div class="field">
             <label>Solids mg/L <span>(safe: 0 – 500)</span></label>
-            <input type="number" name="solids" step="0.1" value="300" required>
+            <input type="number" name="solids" step="0.1" placeholder="e.g. 300" required>
           </div>
           <div class="field">
             <label>Chloramines mg/L <span>(safe: 0 – 4)</span></label>
-            <input type="number" name="chloramines" step="0.01" value="2.0" required>
+            <input type="number" name="chloramines" step="0.01" placeholder="e.g. 2.0" required>
           </div>
           <div class="field">
             <label>Sulfate mg/L <span>(safe: 0 – 250)</span></label>
-            <input type="number" name="sulfate" step="0.1" value="150" required>
+            <input type="number" name="sulfate" step="0.1" placeholder="e.g. 150" required>
           </div>
           <div class="field">
             <label>Conductivity µS/cm <span>(safe: 0 – 400)</span></label>
-            <input type="number" name="conductivity" step="0.1" value="300" required>
+            <input type="number" name="conductivity" step="0.1" placeholder="e.g. 300" required>
           </div>
           <div class="field">
             <label>Organic Carbon mg/L <span>(safe: 0 – 2)</span></label>
-            <input type="number" name="organic_carbon" step="0.01" value="1.0" required>
+            <input type="number" name="organic_carbon" step="0.01" placeholder="e.g. 1.0" required>
           </div>
           <div class="field">
             <label>Trihalomethanes µg/L <span>(safe: 0 – 80)</span></label>
-            <input type="number" name="trihalomethanes" step="0.1" value="40" required>
+            <input type="number" name="trihalomethanes" step="0.1" placeholder="e.g. 40" required>
           </div>
           <div class="field">
             <label>Turbidity NTU <span>(safe: 0 – 4)</span></label>
-            <input type="number" name="turbidity" step="0.01" value="2.0" required>
+            <input type="number" name="turbidity" step="0.01" placeholder="e.g. 2.0" required>
           </div>
         </div>
         <button type="submit">🔍 Check Water Quality</button>
@@ -70,4 +71,4 @@
     </div>
   </div>
 </body>
-</html>
+</html> 

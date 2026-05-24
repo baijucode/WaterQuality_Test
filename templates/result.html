@@ -79,10 +79,10 @@
       <div class="section-title">📋 Your Input Values</div>
       <div class="inputs-grid">
         {% for key, val in inputs.items() %}
-        <div class="input-row">
-          <span class="input-key">{{ labels[key] }}</span>
+          <div class="input-row">
+          <span class="input-key">{{ key.replace('_', ' ').title() }}</span>
           <span class="input-val">{{ val }}</span>
-        </div>
+          </div>
         {% endfor %}
       </div>
     </div>
