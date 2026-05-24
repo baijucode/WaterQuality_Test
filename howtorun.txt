@@ -1,0 +1,11 @@
+# 1. Open terminal in VS Code and navigate to project
+cd "C:\Users\Acer\Desktop\Water quality Classifier"
+
+# 2. Activate virtual environment
+venv\Scripts\activate
+
+# 3. Start the server
+uvicorn app.main:app --reload
+
+stop
+Ctrl + C

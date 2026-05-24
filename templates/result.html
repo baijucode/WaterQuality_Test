@@ -18,8 +18,9 @@
     .unsafe .result-label { color: #c0392b; }
     .confidence { font-size: 15px; color: #555; margin-top: 6px; }
     .advice { font-size: 14px; margin-top: 10px; color: #666; font-style: italic; }
-    .section-title { font-size: 16px; font-weight: bold; color: #1a4e6e; margin-bottom: 12px; }
+    .impossible-note { font-size: 13px; margin-top: 8px; color: #c0392b; font-weight: bold; }
     .card { background: #fff; border-radius: 12px; padding: 22px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .section-title { font-size: 16px; font-weight: bold; color: #1a4e6e; margin-bottom: 12px; }
     .risk-item { display: flex; justify-content: space-between; align-items: center;
                  padding: 10px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
     .risk-item:last-child { border-bottom: none; }
@@ -28,10 +29,9 @@
     .risk-range { color: #888; font-size: 12px; margin-top: 2px; }
     .no-risk { color: #1e8a4a; font-size: 14px; }
     .inputs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; }
-    .input-row { display: flex; justify-content: space-between; padding: 5px 0;
-                 border-bottom: 1px solid #f5f5f5; }
-    .input-key   { color: #666; }
-    .input-val   { font-weight: bold; color: #333; }
+    .input-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #f5f5f5; }
+    .input-key { color: #666; }
+    .input-val { font-weight: bold; color: #333; }
     a.back-btn { display: block; text-align: center; margin-top: 20px; padding: 12px;
                  background: #1a4e6e; color: #fff; border-radius: 8px;
                  text-decoration: none; font-size: 16px; }
@@ -42,21 +42,24 @@
   <div class="container">
     <h1>💧 Water Quality Result</h1>
 
-    <!-- Main prediction result -->
     <div class="result-card {{ 'safe' if safe else 'unsafe' }}">
       <div class="result-icon">{{ '✅' if safe else '⚠️' }}</div>
       <div class="result-label">{{ 'SAFE TO DRINK' if safe else 'NOT SAFE TO DRINK' }}</div>
-      <div class="confidence">Model confidence: {{ confidence }}%</div>
-      <div class="advice">
-        {% if safe %}
-          This water meets standard safety thresholds. Still, consider local regulations.
-        {% else %}
-          This water may be unsafe. Consider boiling, filtering, or professional testing.
-        {% endif %}
-      </div>
+
+      {% if impossible %}
+        <div class="impossible-note">Physically impossible value detected — no model needed</div>
+      {% else %}
+        <div class="confidence">Model confidence: {{ confidence }}%</div>
+        <div class="advice">
+          {% if safe %}
+            This water meets standard safety thresholds. Still consider local regulations.
+          {% else %}
+            This water may be unsafe. Consider boiling, filtering, or professional testing.
+          {% endif %}
+        </div>
+      {% endif %}
     </div>
 
-    <!-- Risky factors -->
     <div class="card">
       <div class="section-title">⚡ Risk Factors</div>
       {% if risky %}
@@ -74,15 +77,14 @@
       {% endif %}
     </div>
 
-    <!-- Input summary -->
     <div class="card">
       <div class="section-title">📋 Your Input Values</div>
       <div class="inputs-grid">
         {% for key, val in inputs.items() %}
-          <div class="input-row">
+        <div class="input-row">
           <span class="input-key">{{ key.replace('_', ' ').title() }}</span>
           <span class="input-val">{{ val }}</span>
-          </div>
+        </div>
         {% endfor %}
       </div>
     </div>
